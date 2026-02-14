@@ -95,6 +95,15 @@
     color: var(--primary-color);
 }
 
+.logo-link {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.logo-link:hover {
+    transform: scale(1.02);
+}
+
 .nav-logo {
     height: 70px;
     width: auto;
@@ -104,7 +113,6 @@
 
 .nav-logo:hover {
     filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
-    transform: scale(1.02);
 }
 
 /* Header Actions (Search + Button) */

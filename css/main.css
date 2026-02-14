@@ -39,15 +39,15 @@
 
 /* Brand Scroller */
 .brand-scroller-section {
-    padding: 30px 0;
+    padding: 15px 0;
     background-color: var(--white);
     overflow: hidden;
 }
 
 .brands-track {
     display: flex;
-    gap: 50px;
-    padding: 20px 0;
+    gap: 40px;
+    padding: 5px 0;
     width: max-content;
     animation: scroll-brands 45s linear infinite;
 }
