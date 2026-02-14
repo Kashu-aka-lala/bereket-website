@@ -1,77 +1,90 @@
-/* Animations & Hover Effects */
+/* Premium Reveals & Transitions */
+:root {
+    --premium-ease: cubic-bezier(0.19, 1, 0.22, 1);
+    --stagger-delay: 0.1s;
+}
 
-/* Reveal on Scroll */
+/* Base Reveal Class */
 .reveal {
-    position: relative;
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+    transition: opacity 1.2s var(--premium-ease),
+        transform 1.2s var(--premium-ease);
     will-change: transform, opacity;
 }
 
+/* Modifier Classes */
+.reveal-up {
+    transform: translateY(60px);
+}
+
+.reveal-down {
+    transform: translateY(-60px);
+}
+
+.reveal-left {
+    transform: translateX(60px);
+}
+
+.reveal-right {
+    transform: translateX(-60px);
+}
+
+.reveal-scale {
+    transform: scale(0.9);
+}
+
+/* Active State */
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0) scale(1);
+    pointer-events: all;
 }
 
-/* Delay Utlities */
-.delay-100 {
-    transition-delay: 100ms;
+/* Auto-Stagger System (Used via JS index) */
+.reveal.active[style*="--stagger-index"] {
+    transition-delay: calc(var(--stagger-index) * var(--stagger-delay));
 }
 
-.delay-200 {
-    transition-delay: 200ms;
+/* Premium Hover feedback for Gallery */
+.gallery-card {
+    transition: transform 0.8s var(--premium-ease),
+        box-shadow 0.8s var(--premium-ease);
 }
 
-.delay-300 {
-    transition-delay: 300ms;
+.gallery-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    z-index: 5;
 }
 
-.delay-400 {
-    transition-delay: 400ms;
+.gallery-card .gallery-img img {
+    transition: transform 1.5s var(--premium-ease);
 }
 
-.delay-500 {
-    transition-delay: 500ms;
+.gallery-card:hover .gallery-img img {
+    transform: scale(1.1);
 }
 
-/* Magnetic Card Effect (Base Class) */
+/* Magnetic Interaction (Refinement) */
 .magnetic-card {
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.4s var(--premium-ease);
 }
 
 .magnetic-card:hover {
-    transform: scale(1.05) translateZ(0);
-    z-index: 10;
+    transform: translateY(-10px) scale(1.03);
 }
 
-/* Glassmorphism Pulse */
-.glass-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
-            rgba(212, 175, 55, 0.15) 0%,
-            transparent 50%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.magnetic-card:hover .glass-glow {
-    opacity: 1;
-}
-
-/* Parallax Video Effect */
+/* Parallax Video (Refinement) */
 .parallax-wrap {
     overflow: hidden;
+    border-radius: 12px;
+    /* Smoother cornering */
 }
 
 .parallax-video {
-    transform: scale(1.1);
-    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: scale(1.15);
+    transition: transform 1.2s var(--premium-ease);
 }
 
 .parallax-wrap:hover .parallax-video {

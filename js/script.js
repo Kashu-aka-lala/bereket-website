@@ -72,27 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
+            const ifOffset = pageYOffset >= (sectionTop - 150);
+            if (ifOffset) {
                 current = section.getAttribute('id');
             }
         });
 
         navItems.forEach(li => {
             li.classList.remove('active');
-            if (li.getAttribute('href').includes(current)) {
+            if (current && li.getAttribute('href').includes(current)) {
                 li.classList.add('active');
-            }
-        });
-
-        // Scroll Reveal Logic
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach(el => {
-            const windowHeight = window.innerHeight;
-            const revealTop = el.getBoundingClientRect().top;
-            const revealPoint = 150;
-            if (revealTop < windowHeight - revealPoint) {
-                el.classList.add('active');
             }
         });
 
@@ -104,6 +93,43 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+    // 4.1 Premium Reveal Logic (IntersectionObserver)
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Once it's revealed, we can stop observing
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    // 4.2 Auto-Stagger Engine
+    function applyAutoStagger() {
+        const containers = document.querySelectorAll('.gallery-grid, .board-grid, .product-grid, .footer-grid, .trust-grid');
+        containers.forEach(container => {
+            const children = container.children;
+            Array.from(children).forEach((child, index) => {
+                // Only stagger if they have reveal classes
+                if (child.classList.contains('reveal') || child.querySelector('.reveal')) {
+                    child.style.setProperty('--stagger-index', index);
+                    // If child itself isn't reveal, maybe it's the parent of a reveal? 
+                    // Better yet, just ensure children get it.
+                } else if (container.classList.contains('stagger-reveal')) {
+                    // Fallback for containers explicitly marked
+                    child.style.setProperty('--stagger-index', index);
+                }
+            });
+        });
+    }
+
+    // Initialize Reveals
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    applyAutoStagger();
 
     // Magnetic Card Effect
     const magneticCards = document.querySelectorAll('.magnetic-card');
