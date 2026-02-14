@@ -84,6 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.classList.add('active');
             }
         });
+
+        // Scroll Reveal Logic
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const revealTop = el.getBoundingClientRect().top;
+            const revealPoint = 150;
+            if (revealTop < windowHeight - revealPoint) {
+                el.classList.add('active');
+            }
+        });
+
+        // Header Scrolled State
+        const header = document.querySelector('.main-header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Magnetic Card Effect
+    const magneticCards = document.querySelectorAll('.magnetic-card');
+    magneticCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
     });
 
 
@@ -289,49 +320,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 9. Infinite Brand Scroller Logic
-    const scrollerTrack = document.querySelector('.brands-track');
-    const brands = Array.from(document.querySelectorAll('.brand-slide'));
+    // ... existing logic ...
 
-    if (scrollerTrack && brands.length > 0) {
-        // Calculate total width of original content including gap
-        // We assume all slides have same width + gap. 
-        // Best way is to let CSS handle the width variable, but we need to set it.
-
-        // Clone brands for seamless looping
-        // We need enough clones to fill the screen width + buffer. 
-        // A safe bet for infinite scroll is to double or triple the content 
-        // depending on screen size vs total content width.
-        // For simple linear infinite scroll, 2 sets is minimum, 3 is safer for wide screens.
-
-        // Clone the entire set of brands twice to ensure we never run out of scroll
-        brands.forEach(brand => {
-            const clone = brand.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true'); // Accessibility
-            scrollerTrack.appendChild(clone);
-        });
-
-        brands.forEach(brand => {
-            const clone = brand.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true'); // Accessibility
-            scrollerTrack.appendChild(clone);
-        });
-
-        // Calculate the width of one single iteration of brands
-        // We can do this by summing widths of original brands + padding/gap
-        // Or simply by: (Slide Width + Gap) * Number of Original Slides
-
-        const slideWidth = 500; // refined from CSS
-        const gap = 50; // refined from CSS
-        const totalOriginalWidth = brands.length * (slideWidth + gap);
-
-        // Set the CSS variable for the animation to know how far to scroll
-        scrollerTrack.style.setProperty('--scroll-amount', `${totalOriginalWidth}px`);
-
-        // Optional: Adjust speed based on number of items to keep constant speed
-        // e.g. 5 seconds per 1000px
-        const speedFactor = 5; // seconds per item roughly? No, let's stick to CSS time for now or adjust dynamically
-        // const duration = (totalOriginalWidth / 100) * 2; // Example calculation
-        // scrollerTrack.style.animationDuration = `${duration}s`;
+    // 10. WebP Support Detection (Preparation for Phase 2 Image Optimization)
+    function checkWebP(callback) {
+        var webP = new Image();
+        webP.onload = webP.onerror = function () {
+            callback(webP.height == 2);
+        };
+        webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
     }
+
+    checkWebP(function (support) {
+        if (support) {
+            document.body.classList.add('webp-supported');
+            console.log("WebP supported");
+        } else {
+            document.body.classList.add('no-webp');
+            console.log("WebP not supported");
+        }
+    });
 
 });

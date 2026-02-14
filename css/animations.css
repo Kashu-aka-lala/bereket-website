@@ -1,0 +1,79 @@
+/* Animations & Hover Effects */
+
+/* Reveal on Scroll */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay Utlities */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+/* Magnetic Card Effect (Base Class) */
+.magnetic-card {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.magnetic-card:hover {
+    transform: scale(1.05) translateZ(0);
+    z-index: 10;
+}
+
+/* Glassmorphism Pulse */
+.glass-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+            rgba(212, 175, 55, 0.15) 0%,
+            transparent 50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.magnetic-card:hover .glass-glow {
+    opacity: 1;
+}
+
+/* Parallax Video Effect */
+.parallax-wrap {
+    overflow: hidden;
+}
+
+.parallax-video {
+    transform: scale(1.1);
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.parallax-wrap:hover .parallax-video {
+    transform: scale(1);
+}

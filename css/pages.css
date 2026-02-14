@@ -1,0 +1,58 @@
+/* Pages: Leadership, Factory, Gallery, Alliances, Private Labels */
+
+/* Leadership */
+.executive-row {
+    display: flex;
+    min-height: 600px;
+}
+
+.executive-half {
+    flex: 1;
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.exec-name {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    color: #A52A2A;
+}
+
+/* Factory */
+.factory-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.factory-img-slider {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Alliances */
+.alliance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+@media (max-width: 991px) {
+
+    .executive-row,
+    .factory-layout,
+    .alliance-grid {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,98 @@
+/* Main/Home Page Sections */
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    background: var(--primary-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero h2 {
+    font-family: var(--font-heading);
+    font-size: 72px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Brand Scroller */
+.brand-scroller-section {
+    padding: 100px 0;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.brands-track {
+    display: flex;
+    gap: 50px;
+    padding: 30px 0;
+    width: max-content;
+    animation: scroll-brands 45s linear infinite;
+}
+
+/* Trust Bar */
+.trust-bar {
+    background: linear-gradient(135deg, #0d1520 0%, #1b263b 100%);
+    padding: 100px 0;
+    position: relative;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+/* What Defines Us */
+.defines-us-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+/* Contact Section */
+.contact-section-redesign {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--primary-dark), #0D1520);
+    color: var(--white);
+}
+
+.contact-redesign-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+@media (max-width: 991px) {
+    .hero h2 {
+        font-size: 42px;
+    }
+
+    .trust-grid,
+    .defines-us-grid,
+    .contact-redesign-grid {
+        grid-template-columns: 1fr;
+    }
+}
