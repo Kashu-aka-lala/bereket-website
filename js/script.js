@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             experience: "Rtd. Squadron Leader Sardar Nayyer Khan is a commercially astute CPA certified accountant, commercial businesses with over 30 years’ experience of providing comprehensive high quality finance and accounting support services, Management Consultancy to across Canada."
         },
         {
-            name: "Mr. Rana Muhammad Nouman",
+            name: "Mr. Rana M. Nouman",
             designation: "Founder & Managing Director",
             email: "md@bereketfoods.com",
             image: "assets/images/leadership/board/2.png",
@@ -320,7 +320,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 9. Infinite Brand Scroller Logic
-    // ... existing logic ...
+    const brandsTrack = document.querySelector('.brands-track');
+    if (brandsTrack) {
+        const brands = document.querySelectorAll('.brand-slide');
+
+        // Clone brands for seamless looping
+        brands.forEach(brand => {
+            const clone = brand.cloneNode(true);
+            brandsTrack.appendChild(clone);
+        });
+
+        // Calculate and set the scroll amount dynamically
+        function updateScrollAmount() {
+            const firstBrand = brands[0];
+            if (firstBrand) {
+                const brandWidth = firstBrand.offsetWidth;
+                const style = window.getComputedStyle(brandsTrack);
+                const gap = parseInt(style.columnGap) || parseInt(style.gap) || 0;
+                const totalScrollAmount = (brandWidth + gap) * brands.length;
+
+                brandsTrack.style.setProperty('--scroll-amount', `${totalScrollAmount}px`);
+                // Slow down the animation a bit more since we doubled the items
+                // Current animation is 45s, might needs adjusting based on total width
+            }
+        }
+
+        // Initial update and re-calculate on window resize
+        updateScrollAmount();
+        window.addEventListener('resize', updateScrollAmount);
+
+        // Ensure it updates after images are loaded
+        window.addEventListener('load', updateScrollAmount);
+    }
 
     // 10. WebP Support Detection (Preparation for Phase 2 Image Optimization)
     function checkWebP(callback) {
