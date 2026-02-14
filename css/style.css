@@ -3842,12 +3842,11 @@ footer {
 .partner-scroll-item img {
     height: 60px;
     width: auto;
-    filter: grayscale(1) opacity(0.4);
     transition: var(--transition);
 }
 
 .partner-scroll-item:hover img {
-    filter: grayscale(0) opacity(1);
+    transform: scale(1.05);
 }
 
 @keyframes scrollPartners {
