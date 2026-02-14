@@ -36,7 +36,7 @@
     background: var(--glass-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    padding: 12px 0;
+    padding: 8px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -96,7 +96,7 @@
 }
 
 .nav-logo {
-    height: 90px;
+    height: 70px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: var(--transition);
