@@ -12,8 +12,8 @@
     --text-light: #F0F2F5;
     --bg-light: #F9FAFB;
     --white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.95);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.2);
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Outfit', sans-serif;
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -177,13 +177,15 @@ body {
 
 .main-header {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--glass-border);
     transition: var(--transition);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
 .nav-container {
@@ -1451,8 +1453,8 @@ footer {
     height: 120px;
     width: auto;
     margin-bottom: 25px;
-    /* Ensure logo is visible on dark bg */
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1) contrast(1.2);
+    /* Sharper white logo */
 }
 
 .brand-desc {
