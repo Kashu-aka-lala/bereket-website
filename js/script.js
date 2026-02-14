@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             experience: "Rtd. Squadron Leader Sardar Nayyer Khan is a commercially astute CPA certified accountant, commercial businesses with over 30 years’ experience of providing comprehensive high quality finance and accounting support services, Management Consultancy to across Canada."
         },
         {
-            name: "Mr. Rana M. Nouman",
+            name: "Mr. Rana Muhammad Nouman",
             designation: "Founder & Managing Director",
             email: "md@bereketfoods.com",
             image: "assets/images/leadership/board/2.png",
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Healthcare Sector Management",
                 "Sustainable Solutions"
             ],
-            experience: "Mr. Rana M. Nouman is a strategic entrepreneur with over 25 years of experience across Edible Oils, FMCG, Healthcare, and Beverage sectors managing multi-million dollar businesses. He is dedicated to bridging the gap between modern convenience and holistic health through sustainable, forward-thinking solutions."
+            experience: "Mr. Rana Muhammad Nouman is a strategic entrepreneur with over 25 years of experience across Edible Oils, FMCG, Healthcare, and Beverage sectors managing multi-million dollar businesses. He is dedicated to bridging the gap between modern convenience and holistic health through sustainable, forward-thinking solutions."
         },
         {
-            name: "Mr. Faisal Hayat",
+            name: "Mr. Faisal Omer Hayat",
             designation: "COO & Co-Founder",
             email: "faisal.hayat@bereketfoods.com",
             image: "assets/images/leadership/board/3.png",
@@ -160,10 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Leadership",
                 "Financial Strategy"
             ],
-            experience: "Mr. Faisal is MBA from IBA with over 20+ experience in Strategic Marketing with prior experience of 20+ years in top national FMCG’s companies in leadership positions. A thoroughbred professional strategized and execute the annual marketing budget of USD 14.5 million. Under Mr. Faisal leadership companies witnessed the double-digit sales growth rate. Further Mr. Faisal during his career re strategized and re designed the FMCG portfolio and realized all time high topline."
+            experience: "Mr. Faisal Omer Hayat is MBA from IBA with over 20+ experience in Strategic Marketing with prior experience of 20+ years in top national FMCG’s companies in leadership positions. A thoroughbred professional strategized and execute the annual marketing budget of USD 14.5 million. Under Mr. Faisal Omer Hayat leadership companies witnessed the double-digit sales growth rate. Further Mr. Faisal Omer Hayat during his career re strategized and re designed the FMCG portfolio and realized all time high topline."
         },
         {
-            name: "Mufti Aitisam",
+            name: "Mr. Mufti Aitisam Ud Din Haider",
             designation: "Executive Director Sales",
             email: "m.aitisam@bereketfoods.com",
             image: "assets/images/leadership/board/4.png",
@@ -172,10 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Marketing Strategist",
                 "Brand Excellence Expert"
             ],
-            experience: "Mufti Aitisam is a marketing strategist holding both a BBA and an MBI in Marketing, with a proven track record of driving brand excellence across diverse sectors. With extensive leadership experience at premier organizations including Pepsi, Packages Private Ltd Lhr, Herbion, and Comsian, he has established himself as a versatile professional capable of navigating both multinational and national corporate landscapes. Throughout his career, Mr. Aitisam has been instrumental in spearheading high-impact marketing initiatives and managing complex brand portfolios. His expertise lies in translating consumer insights into actionable strategies that fuel market penetration and sustainable topline growth. Known for his analytical rigor and creative vision, he has consistently delivered results that enhance brand equity and operational efficiency within the competitive FMCG and packaging industries."
+            experience: "Mr. Mufti Aitisam Ud Din Haider is a marketing strategist holding both a BBA and an MBI in Marketing, with a proven track record of driving brand excellence across diverse sectors. With extensive leadership experience at premier organizations including Pepsi, Packages Private Ltd Lhr, Herbion, and Comsian, he has established himself as a versatile professional capable of navigating both multinational and national corporate landscapes. Throughout his career, Mr. Mufti Aitisam Ud Din Haider has been instrumental in spearheading high-impact marketing initiatives and managing complex brand portfolios. His expertise lies in translating consumer insights into actionable strategies that fuel market penetration and sustainable topline growth. Known for his analytical rigor and creative vision, he has consistently delivered results that enhance brand equity and operational efficiency within the competitive FMCG and packaging industries."
         },
         {
-            name: "Usama Khan Swati",
+            name: "Mr. Usama Khan Swati",
             designation: "Executive Director Operations",
             email: "usama.khan@bereketfoods.com",
             image: "assets/images/leadership/board/5.png",
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "E-commerce Excellence",
                 "Tech-Driven Management"
             ],
-            experience: "Usama Khan Swati is a forward-thinking leader with a specialized background in AI/SW, currently serving in the dual capacity of Head of Operations and Head of E-commerce. With a unique blend of technical expertise and strategic business management, he has established himself as a versatile professional capable of scaling digital ecosystems and optimizing complex operational frameworks in an increasingly tech-driven market. Throughout his career, Mr. Swati has been instrumental in spearheading data-driven initiatives and managing integrated commercial portfolios. His expertise lies in leveraging AI-driven insights to streamline operational workflows and enhance e-commerce performance, ensuring sustainable growth and market competitiveness. Known for his analytical precision and operational agility, he consistently delivers results that bridge the gap between emerging technology and commercial excellence."
+            experience: "Mr. Usama Khan Swati is a forward-thinking leader with a specialized background in AI/SW, currently serving in the dual capacity of Head of Operations and Head of E-commerce. With a unique blend of technical expertise and strategic business management, he has established himself as a versatile professional capable of scaling digital ecosystems and optimizing complex operational frameworks in an increasingly tech-driven market. Throughout his career, Mr. Swati has been instrumental in spearheading data-driven initiatives and managing integrated commercial portfolios. His expertise lies in leveraging AI-driven insights to streamline operational workflows and enhance e-commerce performance, ensuring sustainable growth and market competitiveness. Known for his analytical precision and operational agility, he consistently delivers results that bridge the gap between emerging technology and commercial excellence."
         },
         {
             name: "Mr. Muhammad Abubakar",
