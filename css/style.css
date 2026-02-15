@@ -3778,12 +3778,13 @@ footer {
 }
 
 .alliance-logo-wrap img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    /* Prevent touching edges */
+    max-height: 90%;
+    /* Prevent touching edges */
     object-fit: contain;
     transition: all 0.4s ease;
-    mix-blend-mode: multiply;
-    /* Removes white background */
+    /* Removed mix-blend-mode to keep white background */
 }
 
 .alliance-item:hover .alliance-logo-wrap img {
