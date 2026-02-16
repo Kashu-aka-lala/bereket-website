@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4.2 Auto-Stagger Engine
     function applyAutoStagger() {
-        const containers = document.querySelectorAll('.gallery-grid, .board-grid, .product-grid, .footer-grid, .trust-grid');
+        const containers = document.querySelectorAll('.gallery-grid, .board-grid, .product-grid, .footer-grid, .trust-grid, .alliance-grid');
         containers.forEach(container => {
             const children = container.children;
             Array.from(children).forEach((child, index) => {

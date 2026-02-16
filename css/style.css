@@ -3715,7 +3715,8 @@ footer {
 
 /* Alliances Page Styles */
 .alliances-hero {
-    padding: 120px 0 60px;
+    padding: 100px 0 30px;
+    /* Reduced top/bottom padding */
     background-color: #ffffff;
 }
 
@@ -3732,6 +3733,23 @@ footer {
     font-size: 64px;
     font-weight: 700;
     margin-bottom: 20px;
+    opacity: 0;
+    /* Start invisible for animation */
+    animation: fadeInUp 1s ease-out forwards;
+    /* Add fade-in-up animation */
+}
+
+/* Keyframes for animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-subtitle {
@@ -3742,7 +3760,8 @@ footer {
 }
 
 .alliance-grid-section {
-    padding: 60px 0 100px;
+    padding: 20px 0 100px;
+    /* Reduced top padding to bring grid closer to title */
     background-color: #ffffff;
 }
 
