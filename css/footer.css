@@ -120,6 +120,10 @@
     margin: 0;
 }
 
+.footer-bottom-bar p+p {
+    margin-top: 5px;
+}
+
 @media (max-width: 900px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
