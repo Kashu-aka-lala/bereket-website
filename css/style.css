@@ -3609,6 +3609,8 @@ footer {
     object-fit: contain;
 }
 
+
+
 .partner-content h3 {
     font-family: var(--font-heading);
     font-size: 24px;
@@ -4001,12 +4003,16 @@ footer {
     transition: all 0.4s ease;
     /* Deeper shadow for 3D effect */
     filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+    mix-blend-mode: multiply;
+    /* Added to blend white backgrounds of JPEGs */
 }
 
 .brand-scroll-item:hover .brand-scroll-img-wrap img {
     filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.25));
     transform: scale(1.05);
     /* Slight internal scale on hover */
+    mix-blend-mode: multiply;
+    /* Ensure blend mode stays on hover */
 }
 
 /* Tooltip Styling */
