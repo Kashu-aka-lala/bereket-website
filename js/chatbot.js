@@ -1,29 +1,27 @@
-// --- BERE-BOT v4.0 (Neural-Like Search & Interactive UI) ---
-// Features: Levenshtein Fuzzy Matching (Typos), Context-Aware Menus, Rich Content
+// --- BERE-BOT v4.1 (Premium Intelligence & Design) ---
+// Features: Fuzzy Matching, Expanded Knowledge Graph, UI Polish
 
 // 1. KNOWLEDGE GRAPH
-// We structure data into 'nodes' with rich text and suggested follow-up actions (chips).
 const knowledgeGraph = [
     // --- GREETING ---
     {
         id: "greeting",
         triggers: ["hi", "hello", "hey", "start", "greetings", "menu", "assist", "help"],
         response: "Hello! I am **BERE-BOT** 🤖.\n\nI can help you explore Bereket Foods. What would you like to know?",
-        chips: ["Our Brands 🥣", "Leadership 🕴️", "Factory 🏭", "Contact Us 📞"]
+        chips: ["Our Brands 🥣", "Leadership 🕴️", "Factory 🏭", "B2B / Private Label 🤝", "Contact Us 📞"]
     },
 
-    // --- BRANDS (General) ---
+    // --- BRANDS ---
     {
         id: "brands_overview",
         triggers: ["brands", "products", "items", "what do you sell", "portfolio", "catalogue", "list"],
         response: "We offer a diverse range of premium food products. Select a brand to learn more:",
         chips: ["Kuvvet (Porridge)", "Liffest (Kids)", "Niwala (Rice)", "Jarfull (Jams)", "Riverdale (Nectars)", "Jhat Hazam (Health)"]
     },
-    // Specific Brands
     {
         id: "brand_kuvvet",
         triggers: ["kuvvet", "porridge", "oats", "barley", "wheat", "breakfast"],
-        response: "**Kuvvet Cereals** offers the 'Power of Nutrition'.\n\n✅ **Variants:** Barley & Wheat Porridge.\n✅ **Benefits:** High fiber, heart-healthy, and energy-boosting.\n✅ **Usage:** Perfect for a wholesome family breakfast.",
+        response: "**Kuvvet Cereals** offers the 'Power of Nutrition'.\n\n✅ **Variants:** Barley & Wheat Porridge.\n✅ **Benefits:** High fiber, heart-healthy.\n✅ **Usage:** Perfect for a wholesome family breakfast.",
         chips: ["Back to Brands", "Where to Buy?"]
     },
     {
@@ -47,13 +45,13 @@ const knowledgeGraph = [
     {
         id: "brand_riverdale",
         triggers: ["riverdale", "nectar", "juice", "drink", "pulp"],
-        response: "**Riverdale** offers refreshing Fruit Nectars. 🥤\n\n✅ **Taste:** Natural fruit goodness in every sip.\n✅ **Packaging:** Convenient bottles for on-the-go hydration.",
+        response: "**Riverdale** offers refreshing Fruit Nectars. 🥤\n\n✅ **Taste:** Natural fruit goodness in every sip.",
         chips: ["Back to Brands"]
     },
     {
         id: "brand_jhathazam",
         triggers: ["jhat hazam", "jhat", "hazam", "digestive", "gas", "acidity", "churan", "stomach"],
-        response: "**Jhat Hazam** is our consumer healthcare product. 🌿\n\n✅ **Function:** Instant relief from acidity, gas, and heaviness.\n✅ **Formula:** Traditional herbal blend (Churan).\n✅ **Format:** Sachets and jars.",
+        response: "**Jhat Hazam** is our consumer healthcare product. 🌿\n\n✅ **Function:** Instant relief from acidity, gas, and heaviness.\n✅ **Formula:** Traditional herbal blend (Churan).",
         chips: ["Back to Brands"]
     },
 
@@ -62,85 +60,75 @@ const knowledgeGraph = [
         id: "leadership_overview",
         triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner"],
         response: "Our **Board of Honors** is composed of industry veterans. Who would you like to meet?",
-        chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)", "Dir. Sales (Mufti Aitisam)", "Dir. Ops (Usama Swati)", "Non-Exec (M. Abubakar)"]
+        chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)", "Leadership Page"]
     },
     {
         id: "leader_ceo",
         triggers: ["ceo", "chief executive", "nayyer", "khan", "sardar"],
-        response: "👤 **Mr. Sardar Nayyer Khan (CEO)**\n\n• **Background:** Rtd. Squadron Leader, CPA/CMA (Canada), MBA.\n• **Experience:** 30+ years in financial strategy and leadership.\n• **Vision:** Merging nature & science for global prosperity.",
+        response: "👤 **Mr. Sardar Nayyer Khan (CEO)**\n\n• **Background:** Rtd. Squadron Leader, CPA/CMA (Canada).\n• **Experience:** 30+ years in financial strategy.\n• **Vision:** Merging nature & science for global prosperity.",
         chips: ["Back to Leadership", "MD Profile"]
     },
     {
         id: "leader_md",
         triggers: ["md", "managing director", "rana", "nouman", "founder"],
-        response: "👤 **Mr. Rana Muhammad Nouman (MD & Founder)**\n\n• **Experience:** 25+ years in FMCG & Healthcare.\n• **Focus:** Strategic entrepreneurship and global expansion.\n• **Mission:** Bridging modern convenience with holistic health.",
+        response: "👤 **Mr. Rana Muhammad Nouman (MD & Founder)**\n\n• **Experience:** 25+ years in FMCG & Healthcare.\n• **Mission:** Bridging modern convenience with holistic health.",
         chips: ["Back to Leadership", "CEO Profile"]
     },
+
+    // --- B2B & PRIVATE LABELS ---
     {
-        id: "leader_coo",
-        triggers: ["coo", "chief operating", "faisal", "omer", "hayat"],
-        response: "👤 **Mr. Faisal Omer Hayat (COO & Co-Founder)**\n\n• **Education:** MBA from IBA.\n• **Track Record:** Led marketing for top national FMCGs, driving double-digit growth.",
-        chips: ["Back to Leadership"]
+        id: "private_labels",
+        triggers: ["private label", "manufacturing", "contract", "white label", "b2b", "portal"],
+        response: "We are leaders in **Private Label Manufacturing** in Pakistan.\n\n🤝 **Carrefour:** We manufacture 'Liffest' cereals exclusively for them.\n🤝 **ChaseUp:** We provide own-label cereal solutions.\n\nWe offer convenience, consistent quality, and competitive pricing.",
+        chips: ["Partnership Alliances", "B2B Inquiry", "Home"]
     },
     {
-        id: "leader_sales",
-        triggers: ["sales", "director sales", "mufti", "aitisam", "haider"],
-        response: "👤 **Mr. Mufti Aitisam Ud Din Haider (Exec. Dir Sales)**\n\n• **Experience:** Ex-Pepsi, Packages, Herbion.\n• **Role:** Driving brand excellence and market penetration.",
-        chips: ["Back to Leadership"]
-    },
-    {
-        id: "leader_ops",
-        triggers: ["ops", "operations", "usama", "swati", "tech"],
-        response: "👤 **Mr. Usama Khan Swati (Exec. Dir Operations)**\n\n• **Expertise:** AI, E-commerce, & Tech-Driven Management.\n• **Role:** optimizing operational frameworks.",
-        chips: ["Back to Leadership"]
-    },
-    {
-        id: "leader_nonexec",
-        triggers: ["non-executive", "abubakar", "advisor"],
-        response: "👤 **Mr. Muhammad Abubakar (Non-Exec Director)**\n\n• **Profile:** Certified Board Director & Business Excellence Expert.\n• **Role:** Strategic governance.",
-        chips: ["Back to Leadership"]
+        id: "alliances",
+        triggers: ["alliances", "partners", "who do you work with", "retailers"],
+        response: "Our trusted partners include **Carrefour, ChaseUp, D. Watson, SaveMart, Rainbow, Alfatah, Daraz Mall**, and many more.",
+        chips: ["Apply for Partnership", "Private Labels"]
     },
 
-    // --- FACTORY & LOCATIONS ---
+    // --- CORPORATE & ETHICS ---
+    {
+        id: "ethics",
+        triggers: ["ethics", "compliance", "values", "integrity", "standards", "legal"],
+        response: "**Bereket Foods** is committed to the highest standards of integrity.\n\n🌟 **Core Values:** Integrity, Excellence, Sustainability, and Respect.\n\nWe have a strictly enforced Code of Conduct and anonymous whistleblowing channels.",
+        chips: ["Compliance Email", "Terms of Service", "Privacy Policy"]
+    },
+    {
+        id: "careers",
+        triggers: ["jobs", "careers", "hiring", "work at", "internship", "cv", "resume"],
+        response: "We are always looking for exceptional talent! 🚀\n\n📍 **Status:** No open roles currently, but we accept credentials for future opportunities.\n🎓 **Internships:** We run regular internship programs for skill development.",
+        chips: ["Submit CV Email", "Internship Info"]
+    },
+
+    // --- FACTORY & CONTACT ---
     {
         id: "factory",
-        triggers: ["factory", "plant", "manufacturing", "production", "where is it made", "multan"],
-        response: "🏭 **Factory Location:**\n2 Km From Bahawalpur Bypass, Bahawalpur Road, Multan.\n\nOur facility uses state-of-the-art technology and adheres to strict hygiene standards.",
-        chips: ["View on Map", "Contact Us", "Home"]
+        triggers: ["factory", "plant", "manufacturing", "production", "location", "multan"],
+        response: "🏭 **Factory:** 2 Km From Bahawalpur Bypass, Bahawalpur Road, Multan.\n\nOur facility uses state-of-the-art technology and adheres to strict hygiene standards verified by laboratory testing.",
+        chips: ["Contact Us", "Home"]
     },
     {
         id: "contact",
-        triggers: ["contact", "address", "location", "email", "phone", "reach", "office"],
-        response: "📞 **Phone:** +92 333 5647799\n📧 **Email:** info@bereketfoods.com\n\n📍 **Islamabad (HQ):** Bahria Town Phase 8\n📍 **Canada:** Ajax, ON\n📍 **Factory:** Multan",
+        triggers: ["contact", "address", "email", "phone", "reach", "office", "islamabad"],
+        response: "📞 **Phone:** +92 333 5647799\n📧 **Email:** info@bereketfoods.com\n\n📍 **HQ:** Bahria Town Phase 8, Islamabad\n📍 **International:** Ajax, ON, Canada",
         chips: ["Email Us", "Home"]
-    },
-
-    // --- BUSINESS ---
-    {
-        id: "alliances",
-        triggers: ["alliances", "partners", "carrefour", "chaseup", "private label", "b2b"],
-        response: "We are a trusted B2B partner:\n\n🤝 **Carrefour:** We make 'Liffest' cereals for them.\n🤝 **ChaseUp:** We provide private label solutions.\n\nWe offer end-to-end contract manufacturing.",
-        chips: ["Contact for B2B", "Home"]
     }
 ];
 
-// 2. FUZZY MATCHING ALGORITHM (Levenshtein Distance)
-// This allows "brnads" to match "brands" and "nayyar" to match "nayyer".
+// 2. FUZZY MATCHING
 function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) matrix[i] = [i];
     for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-
     for (let i = 1; i <= b.length; i++) {
         for (let j = 1; j <= a.length; j++) {
             if (b.charAt(i - 1) == a.charAt(j - 1)) {
                 matrix[i][j] = matrix[i - 1][j - 1];
             } else {
-                matrix[i][j] = Math.min(
-                    matrix[i - 1][j - 1] + 1,
-                    matrix[i][j - 1] + 1,
-                    matrix[i - 1][j] + 1
-                );
+                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j] + 1);
             }
         }
     }
@@ -152,24 +140,17 @@ function findBestMatch(userInput) {
     let bestNode = null;
     let minDistance = Infinity;
 
-    // 1. Direct Keyword Scan (Fastest)
     for (const node of knowledgeGraph) {
         for (const trigger of node.triggers) {
-            if (cleanInput.includes(trigger)) {
-                return node; // Immediate match if phrase found
-            }
+            if (cleanInput.includes(trigger)) return node;
         }
     }
 
-    // 2. Fuzzy Scan (If direct match fails)
-    // Only check if input is single word or short phrase
-    if (cleanInput.length < 20) {
+    if (cleanInput.length < 25) {
         knowledgeGraph.forEach(node => {
             node.triggers.forEach(trigger => {
                 const distance = getLevenshteinDistance(cleanInput, trigger);
-                // Allow 1 mistake for short words, 2 for long ones
                 const allowedErrors = trigger.length > 5 ? 2 : 1;
-
                 if (distance <= allowedErrors && distance < minDistance) {
                     minDistance = distance;
                     bestNode = node;
@@ -177,7 +158,6 @@ function findBestMatch(userInput) {
             });
         });
     }
-
     return bestNode;
 }
 
@@ -196,7 +176,6 @@ const createChatLi = (message, className) => {
         : `<span><img src="assets/images/favicon.png" alt="Bereket"></span><p></p>`;
     chatLi.innerHTML = chatContent;
 
-    // Process formatting
     const formattedMessage = message
         .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
         .replace(/\n/g, '<br>');
@@ -205,24 +184,14 @@ const createChatLi = (message, className) => {
     return chatLi;
 };
 
-// Chip Creator
 const createChips = (chipsArray) => {
     const chipsContainer = document.createElement("div");
     chipsContainer.classList.add("chat-chips");
-    chipsContainer.style.cssText = "display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; margin-left: 50px;"; // Basic inline style, ideally move to CSS
 
     chipsArray.forEach(chipText => {
         const btn = document.createElement("button");
         btn.textContent = chipText;
-        btn.style.cssText = "background: #fff; border: 1px solid #724ae8; color: #724ae8; border-radius: 15px; padding: 5px 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;";
-
-        btn.onmouseover = () => { btn.style.background = "#724ae8"; btn.style.color = "#fff"; };
-        btn.onmouseout = () => { btn.style.background = "#fff"; btn.style.color = "#724ae8"; };
-
-        btn.onclick = () => {
-            // Send chip text as user message
-            handleChat(chipText);
-        };
+        btn.onclick = () => handleChat(chipText);
         chipsContainer.appendChild(btn);
     });
     return chipsContainer;
@@ -232,51 +201,37 @@ const handleChat = (message = null) => {
     const userMsg = message || chatInput.value.trim();
     if (!userMsg) return;
 
-    // Reset Input
     if (chatInput) {
         chatInput.value = "";
         chatInput.style.height = "auto";
     }
 
-    // Append User Message
     chatbox.appendChild(createChatLi(userMsg, "outgoing"));
     chatbox.scrollTo(0, chatbox.scrollHeight);
 
-    // Typing Delay
+    // Simulated Thinking Delay
     setTimeout(() => {
-        const incomingLi = createChatLi("Thinking...", "incoming");
+        const incomingLi = createChatLi("...", "incoming");
         chatbox.appendChild(incomingLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
 
-        // Generate Response
         setTimeout(() => {
             const match = findBestMatch(userMsg);
-
             if (match) {
-                // Formatting
                 const formattedResponse = match.response
                     .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
                     .replace(/\n/g, '<br>');
-
                 incomingLi.querySelector("p").innerHTML = formattedResponse;
-
-                // Add Chips if available
-                if (match.chips) {
-                    const chipsEl = createChips(match.chips);
-                    chatbox.appendChild(chipsEl);
-                }
+                if (match.chips) chatbox.appendChild(createChips(match.chips));
             } else {
-                incomingLi.querySelector("p").innerHTML = "I am **BERE-BOT** 🤖. I didn't verify that. Try asking about:<br><br>• <b>Brands</b><br>• <b>Leadership</b><br>• <b>Factory</b>";
-                const fallbackChips = createChips(["View Brands", "Leadership Team", "Contact Us"]);
-                chatbox.appendChild(fallbackChips);
+                incomingLi.querySelector("p").innerHTML = "I'm **BERE-BOT** 🤖. I couldn't find a direct answer. Would you like to check our **Brands**, **Leadership**, or **Private Label** solutions?";
+                chatbox.appendChild(createChips(["Our Brands 🥣", "Leadership 🕴️", "Private Labels 🤝", "Contact Us 📞"]));
             }
-
             chatbox.scrollTo(0, chatbox.scrollHeight);
-        }, 500);
-    }, 500);
+        }, 600);
+    }, 400);
 };
 
-// Init
 if (chatInput) {
     chatInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
@@ -284,7 +239,6 @@ if (chatInput) {
             handleChat();
         }
     });
-
     sendChatBtn.addEventListener("click", () => handleChat());
     closeChatBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
     chatbotToggle.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
