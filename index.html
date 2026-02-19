@@ -36,7 +36,9 @@
     <!-- Keep style.css as fallback for now -->
     <link rel="stylesheet" href="css/style.css?v=31">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="css/chatbot.css?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css?v=2">
 </head>
 
 <body>
@@ -432,7 +434,9 @@
                                     <h4>Visit Us</h4>
                                     <p><strong>Islamabad Office:</strong><br>3rd Floor, 13-Plaza, Overseas V Commercial,
                                         Bahria Town Phase 8, Islamabad.<br><br><strong>Overseas
-                                            Office:</strong><br>Suite 205, 40 Hunt Street, Ajax, ON L1S 3M2, Canada</p>
+                                            Office:</strong><br>Suite 205, 40 Hunt Street, Ajax, ON L1S 3M2,
+                                        Canada<br><br><strong>Factory Address:</strong><br>2 Km From Bahawalpur Bypass,
+                                        Bahawalpur Road, Multan</p>
                                 </div>
                             </div>
                             <div class="contact-detail-item">
@@ -636,6 +640,31 @@
     <script src="js/products.js?v=27" defer></script>
 
 
+    <!-- Chatbot Widget -->
+    <!-- Chatbot Widget -->
+    <button class="chatbot-toggler">
+        <span class="fas fa-comment-dots"></span>
+        <span class="fas fa-times"></span>
+    </button>
+    <div class="chatbot">
+        <header class="chatbot-header">
+            <h2>BERE-BOT</h2>
+            <span class="fas fa-times"></span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span><img src="assets/images/favicon.png" alt="Bereket Bot"></span>
+                <p>Hello! I am <b>BERE-BOT</b> 🤖.<br>I can help you with Leadership, Brands, Factory, and more!</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Ask BERE-BOT..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="fas fa-paper-plane"></span>
+        </div>
+    </div>
+
+    <script src="js/script.js?v=27"></script>
+    <script src="js/chatbot.js?v=1"></script>
 </body>
 
 </html>

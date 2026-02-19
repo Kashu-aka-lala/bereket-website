@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css?v=28">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css?v=2">
 </head>
 
 <body class="private-labels-page">
@@ -203,6 +204,29 @@
     </div>
 
     <script src="js/script.js?v=27"></script>
+    <!-- Chatbot Widget -->
+    <div class="chatbot-character-icon"><i class="fas fa-robot"></i></div><button class="chatbot-toggler">
+        <span class="fas fa-comment-dots"></span>
+        <span class="fas fa-times"></span>
+    </button>
+    <div class="chatbot">
+        <header class="chatbot-header">
+            <h2>Bereket Assistant</h2>
+            <span class="fas fa-times"></span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined"><i class="fas fa-robot"></i></span>
+                <p>Hi there ??<br>How can I help you regarding Bereket Foods?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="fas fa-paper-plane"></span>
+        </div>
+    </div>
+    
+    <script src="js/chatbot.js?v=2"></script>
 </body>
 
 </html>
