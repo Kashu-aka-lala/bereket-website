@@ -57,7 +57,7 @@ const knowledgeGraph = [
 
     {
         id: "board_of_honors_overview",
-        triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner", "board of honors"],
+        triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner", "board of honors", "board of honors 🕴️"],
         response: "Taking you to our **Board of Honors** page to meet our visionaries!",
         redirect: "leadership.html",
         chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)"]
@@ -118,7 +118,7 @@ const knowledgeGraph = [
     },
     {
         id: "where_to_buy",
-        triggers: ["where to buy", "buy", "store", "shop", "stockist", "availability", "nearest"],
+        triggers: ["where to buy", "where to buy?", "buy", "store", "shop", "stockist", "availability", "nearest", "purchase", "where can i buy"],
         response: "Redirecting you to our **Alliances Page**, where you can find our full list of retail partners and stores!",
         redirect: "alliances.html"
     }
