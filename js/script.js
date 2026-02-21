@@ -398,4 +398,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 11. Seamless Hero Background Video Switcher
+    const v1 = document.getElementById('hero-bg-video-1');
+    const v2 = document.getElementById('hero-bg-video-2');
+
+    if (v1 && v2) {
+        const videos = [v1, v2];
+        let activeIdx = 0;
+
+        const switchVideos = () => {
+            const currentVideo = videos[activeIdx];
+            const nextIdx = (activeIdx + 1) % videos.length;
+            const nextVideo = videos[nextIdx];
+
+            // Start playing the next video slightly before the current one ends or exactly when it ends
+            nextVideo.currentTime = 0;
+            nextVideo.play().then(() => {
+                // Crossfade
+                nextVideo.style.opacity = "0.6";
+                currentVideo.style.opacity = "0";
+
+                activeIdx = nextIdx;
+            }).catch(err => console.error("Seamless playback error:", err));
+        };
+
+        // Listen for ended event on both
+        v1.addEventListener('ended', switchVideos);
+        v2.addEventListener('ended', switchVideos);
+
+        // Ensure the first one is playing and visible
+        v1.style.opacity = "0.6";
+        v1.play().catch(err => console.log("Auto-play blocked or error:", err));
+    }
+
 });
