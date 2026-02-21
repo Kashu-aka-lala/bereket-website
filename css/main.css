@@ -41,8 +41,10 @@
 /* Brand Scroller */
 .brand-scroller-section {
     padding: 15px 0;
-    background-color: var(--white);
+    background-color: var(--grey-section);
     overflow: hidden;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .brands-track {

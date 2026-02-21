@@ -8,7 +8,7 @@ const knowledgeGraph = [
         id: "greeting",
         triggers: ["hi", "hello", "hey", "start", "greetings", "menu", "assist", "help"],
         response: "Hello! I am **BERE-BOT** 🤖.\n\nI can help you explore Bereket Foods. What would you like to know?",
-        chips: ["Our Brands 🥣", "Leadership 🕴️", "Factory 🏭", "B2B / Private Label 🤝", "Contact Us 📞"]
+        chips: ["Our Brands 🥣", "Board of Honors 🕴️", "Factory 🏭", "B2B / Private Label 🤝", "Contact Us 📞"]
     },
 
     // --- BRANDS ---
@@ -55,24 +55,24 @@ const knowledgeGraph = [
         chips: ["Back to Brands"]
     },
 
-    // --- LEADERSHIP ---
     {
-        id: "leadership_overview",
-        triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner"],
-        response: "Our **Board of Honors** is composed of industry veterans. Who would you like to meet?",
-        chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)", "Leadership Page"]
+        id: "board_of_honors_overview",
+        triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner", "board of honors"],
+        response: "Taking you to our **Board of Honors** page to meet our visionaries!",
+        redirect: "leadership.html",
+        chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)"]
     },
     {
         id: "leader_ceo",
         triggers: ["ceo", "chief executive", "nayyer", "khan", "sardar"],
         response: "👤 **Mr. Sardar Nayyer Khan (CEO)**\n\n• **Background:** Rtd. Squadron Leader, CPA/CMA (Canada).\n• **Experience:** 30+ years in financial strategy.\n• **Vision:** Merging nature & science for global prosperity.",
-        chips: ["Back to Leadership", "MD Profile"]
+        chips: ["Back to Board of Honors", "MD Profile"]
     },
     {
         id: "leader_md",
         triggers: ["md", "managing director", "rana", "nouman", "founder"],
         response: "👤 **Mr. Rana Muhammad Nouman (MD & Founder)**\n\n• **Experience:** 25+ years in FMCG & Healthcare.\n• **Mission:** Bridging modern convenience with holistic health.",
-        chips: ["Back to Leadership", "CEO Profile"]
+        chips: ["Back to Board of Honors", "CEO Profile"]
     },
 
     // --- B2B & PRIVATE LABELS ---
@@ -115,6 +115,12 @@ const knowledgeGraph = [
         triggers: ["contact", "address", "email", "phone", "reach", "office", "islamabad"],
         response: "📞 **Phone:** +92 333 5647799\n📧 **Email:** info@bereketfoods.com\n\n📍 **HQ:** Bahria Town Phase 8, Islamabad\n📍 **International:** Ajax, ON, Canada",
         chips: ["Email Us", "Home"]
+    },
+    {
+        id: "where_to_buy",
+        triggers: ["where to buy", "buy", "store", "shop", "stockist", "availability", "nearest"],
+        response: "Redirecting you to our **Alliances Page**, where you can find our full list of retail partners and stores!",
+        redirect: "alliances.html"
     }
 ];
 
@@ -184,6 +190,16 @@ const createChatLi = (message, className) => {
     return chatLi;
 };
 
+// --- INITIALIZATION ---
+window.addEventListener("DOMContentLoaded", () => {
+    const greetingNode = knowledgeGraph.find(n => n.id === "greeting");
+    if (greetingNode && chatbox) {
+        // Clear hardcoded initial message if any, or just append chips
+        const initialChips = createChips(greetingNode.chips);
+        chatbox.appendChild(initialChips);
+    }
+});
+
 const createChips = (chipsArray) => {
     const chipsContainer = document.createElement("div");
     chipsContainer.classList.add("chat-chips");
@@ -222,10 +238,17 @@ const handleChat = (message = null) => {
                     .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
                     .replace(/\n/g, '<br>');
                 incomingLi.querySelector("p").innerHTML = formattedResponse;
+
+                if (match.redirect) {
+                    setTimeout(() => {
+                        window.location.href = match.redirect;
+                    }, 1500);
+                }
+
                 if (match.chips) chatbox.appendChild(createChips(match.chips));
             } else {
-                incomingLi.querySelector("p").innerHTML = "I'm **BERE-BOT** 🤖. I couldn't find a direct answer. Would you like to check our **Brands**, **Leadership**, or **Private Label** solutions?";
-                chatbox.appendChild(createChips(["Our Brands 🥣", "Leadership 🕴️", "Private Labels 🤝", "Contact Us 📞"]));
+                incomingLi.querySelector("p").innerHTML = "I'm **BERE-BOT** 🤖. I couldn't find a direct answer. Would you like to check our **Brands**, **Board of Honors**, or **Private Label** solutions?";
+                chatbox.appendChild(createChips(["Our Brands 🥣", "Board of Honors 🕴️", "Private Labels 🤝", "Contact Us 📞"]));
             }
             chatbox.scrollTo(0, chatbox.scrollHeight);
         }, 600);
