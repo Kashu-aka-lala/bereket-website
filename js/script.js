@@ -401,9 +401,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 11. Seamless Hero Background Video Switcher
     const v1 = document.getElementById('hero-bg-video-1');
     const v2 = document.getElementById('hero-bg-video-2');
+    const v3 = document.getElementById('hero-bg-video-3');
 
     if (v1 && v2) {
         const videos = [v1, v2];
+        if (v3) videos.push(v3);
+
         let activeIdx = 0;
 
         const switchVideos = () => {
@@ -422,13 +425,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch(err => console.error("Seamless playback error:", err));
         };
 
-        // Listen for ended event on both
-        v1.addEventListener('ended', switchVideos);
-        v2.addEventListener('ended', switchVideos);
+        // Listen for ended event on all videos
+        videos.forEach(video => {
+            video.addEventListener('ended', switchVideos);
+        });
 
         // Ensure the first one is playing and visible
-        v1.style.opacity = "0.6";
-        v1.play().catch(err => console.log("Auto-play blocked or error:", err));
+        videos[0].style.opacity = "0.6";
+        videos[0].play().catch(err => console.log("Auto-play blocked or error:", err));
     }
 
 });
