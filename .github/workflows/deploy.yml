@@ -1,4 +1,4 @@
-# 🚀 Deploy Website - Run after credential verification
+# 🚀 Deploy Website via SFTP
 name: 🚀 Deploy Website
 on:
   push:
@@ -12,12 +12,14 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
-    - name: 📂 Sync files via FTP
+    - name: 📂 Sync files via SFTP
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ftp.bereketfoods.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        port: 22
+        protocol: sftp
         server-dir: ./
         security: loose
         log-level: verbose
