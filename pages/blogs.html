@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs — Bereket Foods | Industry Insights & Updates</title>
+    <meta name="description"
+        content="Explore the Bereket Foods blog for insights on Pakistan's FMCG industry, private label manufacturing, halal food export, breakfast cereals, and more.">
+    <meta name="keywords"
+        content="Bereket Foods blog, FMCG Pakistan news, halal food export blog, breakfast cereal manufacturer Pakistan, private label manufacturing insights, fortified cereal Pakistan">
+    <link rel="canonical" href="https://www.bereketfoods.com/blogs">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bereketfoods.com/blogs">
+    <meta property="og:title" content="Blogs — Bereket Foods | Industry Insights & Updates">
+    <meta property="og:description"
+        content="Explore the Bereket Foods blog for insights on Pakistan's FMCG industry, private label manufacturing, halal food export, and breakfast cereals.">
+    <meta property="og:image" content="https://www.bereketfoods.com/assets/images/hero_bg_slide.png">
+
+    <link rel="stylesheet" href="css/style.css?v=31">
+    <link rel="stylesheet" href="css/base.css?v=31">
+    <link rel="stylesheet" href="css/header.css?v=31">
+    <link rel="stylesheet" href="css/footer.css?v=31">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbot.css?v=33">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== BLOG PAGE STYLES ===== */
+        * {
+            box-sizing: border-box;
+        }
+
+        .blog-hero {
+            background: linear-gradient(135deg, #0f1923 0%, #1B263B 50%, #0d3b6e 100%);
+            padding: 120px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(196, 150, 55, 0.08) 0%, transparent 60%);
+            animation: pulse-glow 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .blog-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-hero .sub-heading {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #c49637;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .blog-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .blog-hero h1 span {
+            color: #c49637;
+        }
+
+        .blog-hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #c49637, #f0c060);
+            margin: 24px auto;
+            border-radius: 2px;
+        }
+
+        /* ===== BLOG GRID ===== */
+        .blog-section {
+            padding: 80px 0;
+            background: #f8f9fb;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 36px;
+            margin-top: 48px;
+        }
+
+        /* ===== BLOG CARD ===== */
+        .blog-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(27, 38, 59, 0.08);
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(27, 38, 59, 0.15);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-card-image-placeholder {
+            width: 100%;
+            height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .blog-card-body {
+            padding: 32px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #c49637, #f0c060);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .blog-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #1B263B;
+            font-weight: 700;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .blog-card-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .blog-card-text p {
+            margin-bottom: 12px;
+        }
+
+        .blog-card-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .blog-card-text strong {
+            color: #1B263B;
+            font-weight: 600;
+        }
+
+        .blog-card-text a {
+            color: #c49637;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(196, 150, 55, 0.3);
+            transition: border-color 0.2s;
+        }
+
+        .blog-card-text a:hover {
+            border-color: #c49637;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.82rem;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 18px;
+            margin-top: 16px;
+        }
+
+        .blog-card-meta i {
+            color: #c49637;
+        }
+
+        /* ===== SEO KEYWORD TAGS ===== */
+        .blog-tags-section {
+            padding: 0 0 60px;
+            background: #f8f9fb;
+        }
+
+        .seo-text-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .seo-text-tags span {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            color: #555;
+            font-size: 0.82rem;
+            padding: 7px 18px;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+        }
+
+        .seo-text-tags span:hover {
+            background: #1B263B;
+            color: #fff;
+            border-color: #1B263B;
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header-centered {
+            text-align: center;
+        }
+
+        .section-header-centered .sub-label {
+            font-size: 0.78rem;
+            letter-spacing: 4px;
+            color: #c49637;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-header-centered h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: #1B263B;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header-centered h2 span {
+            color: #c49637;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #c49637, #f0c060);
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+
+        .section-header-centered p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-hero {
+                padding: 100px 20px 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="top-contact">
+                <a href="mailto:info@bereketfoods.com"><i class="fas fa-envelope"></i> info@bereketfoods.com</a>
+                <span>|</span>
+                <a href="tel:+923335647799"><i class="fas fa-phone-alt"></i> +92 333 5647799</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61554711700745" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/bereket-foods-pvt-ltd/" target="_blank"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/logo-clean.png" alt="Bereket International" class="nav-logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#brands">Our Brands</a></li>
+                    <li><a href="leadership.html">Board of Honors</a></li>
+                    <li><a href="factory.html">Factory</a></li>
+                    <li><a href="alliances.html">Alliances</a></li>
+                    <li><a href="private-labels.html">Private Labels</a></li>
+                    <li><a href="media-gallery.html">Media</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Blog Hero -->
+        <section class="blog-hero">
+            <div class="container">
+                <span class="sub-heading">BEREKET FOODS</span>
+                <h1>Industry <span>Insights</span> &amp; Updates</h1>
+                <div class="hero-divider"></div>
+                <p>Explore expert articles on Pakistan's FMCG landscape, halal food manufacturing, private label
+                    opportunities, and healthy nutrition.</p>
+            </div>
+        </section>
+
+        <!-- Blog Posts Section -->
+        <section class="blog-section">
+            <div class="container">
+                <div class="section-header-centered">
+                    <p class="sub-label">OUR BLOG</p>
+                    <h2>Latest <span>Articles</span></h2>
+                    <div class="section-divider"></div>
+                    <p>Read our latest news, industry insights, and updates from the world of Bereket Foods.</p>
+                </div>
+
+                <div class="blog-grid">
+
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image-placeholder"
+                            style="background: linear-gradient(135deg, #1B263B 0%, #0d3b6e 100%);">
+                            <i class="fas fa-seedling" style="color: #c49637;"></i>
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-tag">Industry</span>
+                            <h2 class="blog-card-title">Pakistan's Leading Breakfast Cereal &amp; FMCG Manufacturer</h2>
+                            <div class="blog-card-text">
+                                <p>
+                                    Bereket Foods is one of Pakistan's fastest-growing <strong>FMCG food
+                                        manufacturers</strong>, headquartered in Islamabad with a state-of-the-art
+                                    <strong>extrusion plant in Multan</strong>. Since our founding in 2022, we have
+                                    grown from a vision of natural goodness into a multi-brand portfolio trusted by
+                                    families across Pakistan and now positioning for international food export markets.
+                                </p>
+                                <p>
+                                    Our product range spans <strong>fortified breakfast cereals</strong>,
+                                    <strong>instant porridges</strong>, premium jams and marmalades, digestive health
+                                    solutions, and Basmati rice — all manufactured to international quality standards.
+                                    As a <strong>Halal-certified food manufacturer in Pakistan</strong>, we meet the
+                                    sourcing requirements of buyers across the Middle East, the United Kingdom, Canada,
+                                    and beyond.
+                                </p>
+                            </div>
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar-alt"></i> February 2026</span>
+                                <span><i class="fas fa-tag"></i> FMCG Pakistan</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card">
+                        <div class="blog-card-image-placeholder"
+                            style="background: linear-gradient(135deg, #0d3b6e 0%, #c49637 100%);">
+                            <i class="fas fa-tags" style="color: #fff; font-size: 2.5rem;"></i>
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-tag">Export</span>
+                            <h2 class="blog-card-title">Private Label Manufacturing &amp; Food Export from Pakistan</h2>
+                            <div class="blog-card-text">
+                                <p>
+                                    Bereket Foods offers <strong>private label breakfast cereal manufacturing</strong>
+                                    for local and international retailers. We have successfully partnered with leading
+                                    regional supermarket chains including <strong>Carrefour</strong> and
+                                    <strong>ChaseUp</strong>, delivering custom-formulated cereal products that meet
+                                    each brand's specific nutrition and packaging requirements.
+                                </p>
+                                <p>
+                                    Whether you are a supermarket chain seeking a <strong>white-label cereal supplier
+                                        in Pakistan</strong>, a food importer looking for a reliable
+                                    <strong>contract manufacturing partner</strong>, or a distributor exploring the
+                                    growing Pakistani healthy breakfast market — Bereket Foods provides scalable
+                                    production capacity, competitive pricing, and full regulatory compliance. Contact
+                                    us at <a href="mailto:md@bereketfoods.com">md@bereketfoods.com</a> to discuss your
+                                    requirements.
+                                </p>
+                            </div>
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar-alt"></i> February 2026</span>
+                                <span><i class="fas fa-tag"></i> Private Label</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Keyword Tags -->
+        <section class="blog-tags-section">
+            <div class="container">
+                <div class="seo-text-tags">
+                    <span>Breakfast Cereals</span>
+                    <span>Instant Porridge</span>
+                    <span>Halal Certified</span>
+                    <span>Private Label Manufacturing</span>
+                    <span>Food Export Pakistan</span>
+                    <span>Fortified Nutrition</span>
+                    <span>Multan Factory</span>
+                    <span>FMCG Pakistan</span>
+                    <span>Jam &amp; Condiments</span>
+                    <span>Digestive Health</span>
+                    <span>Basmati Rice</span>
+                    <span>Contract Manufacturing</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-redesign">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1: Brand Identity -->
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="assets/images/logo-clean.png" alt="Bereket Foods" class="footer-logo-img">
+                    </a>
+                    <p class="brand-desc">
+                        Bringing prosperity to your table through the perfect amalgamation of nature and science.
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4>QUICK LINKS</h4>
+                    <ul>
+                        <li><a href="index.html#brands">Our Brands</a></li>
+                        <li><a href="leadership.html">Board of Honors</a></li>
+                        <li><a href="factory.html">Factory</a></li>
+                        <li><a href="alliances.html">Alliances</a></li>
+                        <li><a href="private-labels.html">Private Labels</a></li>
+                        <li><a href="media-gallery.html">Media</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Corporate -->
+                <div class="footer-col">
+                    <h4>CORPORATE</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="openCareersModal()">Careers</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="ethics-and-compliance.html">Ethics &amp; Compliance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Get In Touch -->
+                <div class="footer-col">
+                    <h4>GET IN TOUCH</h4>
+                    <div class="footer-contact-info">
+                        <a href="mailto:info@bereketfoods.com">
+                            <i class="fas fa-envelope"></i> info@bereketfoods.com
+                        </a>
+                    </div>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61554711700745" target="_blank"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/bereket-foods-pvt-ltd/" target="_blank"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 Bereket Foods. All Rights Reserved.</p>
+                <p>Powered By UAN technologies &#174;</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Careers Modal -->
+    <div id="careersModal" class="modal-overlay" onclick="handleOutsideClick(event)">
+        <div class="careers-modal-content">
+            <button class="modal-close-btn" onclick="closeCareersModal()">&times;</button>
+            <h3 class="careers-title">Join the Bereket Family</h3>
+            <div class="careers-status">Currently, we are not hiring.</div>
+            <p class="careers-note">
+                We are always looking for exceptional talent. While there are no open roles at this time,
+                you may submit your credentials for future opportunities.
+            </p>
+            <a href="mailto:careers@bereketfoods.com?subject=Future Talent Inquiry" class="careers-btn">
+                Submit Your CV
+            </a>
+        </div>
+    </div>
+
+    <script src="js/script.js?v=27"></script>
+
+    <!-- Chatbot Widget -->
+    <button class="chatbot-toggler">
+        <span class="fas fa-comment-dots"></span>
+        <span class="fas fa-times"></span>
+    </button>
+    <div class="chatbot">
+        <header class="chatbot-header">
+            <h2>BERE-BOT</h2>
+            <span class="fas fa-times"></span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span><img src="assets/images/favicon.png" alt="Bereket Bot"></span>
+                <p>Hello! I am <b>BERE-BOT</b> 🤖.<br>I can help you with Board of Honors, Brands, Factory, and more!
+                </p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Ask BERE-BOT..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="fas fa-paper-plane"></span>
+        </div>
+    </div>
+
+    <script src="js/chatbot.js?v=33"></script>
+</body>
+
+</html>
