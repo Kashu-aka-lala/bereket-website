@@ -1,25 +1,26 @@
 # 🚀 Deploy Website via SFTP
 name: 🚀 Deploy Website
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
+    name: 🎉 SFTP Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
     - name: 📂 Sync files via SFTP
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ftp.bereketfoods.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        server: ftp.bereketfoods.com
         port: 22
-        protocol: sftp
-        server-dir: ./
-        security: loose
-        log-level: verbose
+        local_path: './'
+        remote_path: './'
+        sftp_only: true
