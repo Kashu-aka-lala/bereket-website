@@ -1,23 +1,26 @@
-# 🚀 Deploy Website - Run after credential verification
+# 🚀 Deploy Website via SFTP
 name: 🚀 Deploy Website
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
+    name: 🎉 SFTP Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
-    - name: 📂 Sync files via FTP
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+    - name: 📂 Sync files via SFTP
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ftp.bereketfoods.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ./
-        security: loose
-        log-level: verbose
+        server: ftp.bereketfoods.com
+        port: 22
+        local_path: './'
+        remote_path: './'
+        sftp_only: true

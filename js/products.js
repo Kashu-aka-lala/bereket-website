@@ -1,7 +1,7 @@
 // Product Modal System
 // Product data for each brand
 const brandProducts = {
-    'Kuvvet': {
+    'Kuvvet Cereals': {
         tagline: 'More Power To You',
         description: 'kuVvet by BEREKET FOODS is a high-performance cereal range engineered through advanced R&D to deliver elite nutrition and a superior flavor profile. Each variety is precision-fortified with essential vitamins and minerals, specifically formulated to support physical strength and sustained energy throughout the day.',
         products: [
@@ -367,112 +367,112 @@ const brandProducts = {
                 weight: '450g',
                 weightValue: 450,
                 description: 'Crunchy chocolate-flavored cereal balls, fortified with vitamins and minerals.',
-                image: 'assets/images/products/lifest/choco-balls-450g.png'
+                image: 'assets/images/products/liffest/choco-balls-450g.png'
             },
             {
                 name: 'Choco Balls',
                 weight: '250g',
                 weightValue: 250,
                 description: 'Crunchy chocolate-flavored cereal balls, fortified with vitamins and minerals.',
-                image: 'assets/images/products/lifest/choco-balls-450g.png'
+                image: 'assets/images/products/liffest/choco-balls-450g.png'
             },
             {
                 name: 'Choco Balls',
                 weight: '150g',
                 weightValue: 150,
                 description: 'Crunchy chocolate-flavored cereal balls, fortified with vitamins and minerals.',
-                image: 'assets/images/products/lifest/choco-balls-450g.png'
+                image: 'assets/images/products/liffest/choco-balls-450g.png'
             },
             {
                 name: 'Choco Balls (Pouch)',
                 weight: '100g',
                 weightValue: 100,
                 description: 'Crunchy chocolate-flavored cereal balls in a convenient pouch.',
-                image: 'assets/images/products/lifest/choco-balls-450g.png'
+                image: 'assets/images/products/liffest/choco-balls-450g.png'
             },
             {
                 name: 'Choco Loops',
                 weight: '450g',
                 weightValue: 450,
                 description: 'Ring shaped chocolate cereal that turns milk into a chocolaty treat.',
-                image: 'assets/images/products/lifest/choco-loops-250g.png'
+                image: 'assets/images/products/liffest/choco-loops-250g.png'
             },
             {
                 name: 'Choco Loops',
                 weight: '250g',
                 weightValue: 250,
                 description: 'Ring shaped chocolate cereal that turns milk into a chocolaty treat.',
-                image: 'assets/images/products/lifest/choco-loops-250g.png'
+                image: 'assets/images/products/liffest/choco-loops-250g.png'
             },
             {
                 name: 'Choco Loops',
                 weight: '150g',
                 weightValue: 150,
                 description: 'Ring shaped chocolate cereal that turns milk into a chocolaty treat.',
-                image: 'assets/images/products/lifest/choco-loops-250g.png'
+                image: 'assets/images/products/liffest/choco-loops-250g.png'
             },
             {
                 name: 'Choco Loops (Pouch)',
                 weight: '100g',
                 weightValue: 100,
                 description: 'Convenient pouch of chocolate loops for a quick, delicious breakfast.',
-                image: 'assets/images/products/lifest/choco-loops-100g.png'
+                image: 'assets/images/products/liffest/choco-loops-100g.png'
             },
             {
                 name: 'Choco Shells',
                 weight: '450g',
                 weightValue: 450,
                 description: 'Delicious chocolate-flavored shell shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco-shells-150g.png'
+                image: 'assets/images/products/liffest/choco-shells-150g.png'
             },
             {
                 name: 'Choco Shells',
                 weight: '250g',
                 weightValue: 250,
                 description: 'Delicious chocolate-flavored shell shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco-shells-150g.png'
+                image: 'assets/images/products/liffest/choco-shells-150g.png'
             },
             {
                 name: 'Choco Shells',
                 weight: '150g',
                 weightValue: 150,
                 description: 'Delicious chocolate-flavored shell shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco-shells-150g.png'
+                image: 'assets/images/products/liffest/choco-shells-150g.png'
             },
             {
                 name: 'Choco Shells (Pouch)',
                 weight: '100g',
                 weightValue: 100,
                 description: 'Chocolate-flavored shells in a convenient 100g pouch.',
-                image: 'assets/images/products/lifest/choco-shells-100g.png'
+                image: 'assets/images/products/liffest/choco-shells-100g.png'
             },
             {
                 name: 'Choco Stars',
                 weight: '450g',
                 weightValue: 450,
                 description: 'Chocolate flavored star shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco stars.png'
+                image: 'assets/images/products/liffest/choco stars.png'
             },
             {
                 name: 'Choco Stars',
                 weight: '250g',
                 weightValue: 250,
                 description: 'Chocolate flavored star shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco stars.png'
+                image: 'assets/images/products/liffest/choco stars.png'
             },
             {
                 name: 'Choco Stars',
                 weight: '150g',
                 weightValue: 150,
                 description: 'Chocolate flavored star shaped cereal, enriched with essential nutrients.',
-                image: 'assets/images/products/lifest/choco stars.png'
+                image: 'assets/images/products/liffest/choco stars.png'
             },
             {
                 name: 'Choco Stars (Pouch)',
                 weight: '100g',
                 weightValue: 100,
                 description: 'Chocolate flavored stars in a convenient 100g pouch.',
-                image: 'assets/images/products/lifest/choco stars.png'
+                image: 'assets/images/products/liffest/choco stars.png'
             }
         ]
     }
