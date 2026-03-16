@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Sardar Nayyer Khan",
             designation: "Chief Executive Officer",
             email: "ceo@bereketfoods.com",
-            image: "assets/images/leadership/board/1.png",
+            image: "../assets/images/leadership/board/1.png",
             quals: [
                 "CPA, CGA (Canada), CMA, MBA",
                 "Business Strategies",
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Rana M. Nouman",
             designation: "Founder & Managing Director",
             email: "md@bereketfoods.com",
-            image: "assets/images/leadership/board/2.png",
+            image: "../assets/images/leadership/board/2.png",
             quals: [
                 "Business Graduate",
                 "Strategic Entrepreneurship",
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Faisal Omer Hayat",
             designation: "COO & Co-Founder",
             email: "faisal.hayat@bereketfoods.com",
-            image: "assets/images/leadership/board/3.png",
+            image: "../assets/images/leadership/board/3.png",
             quals: [
                 "MBA (IBA)",
                 "Strategic Marketing",
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Mufti Aitisam Ud Din Haider",
             designation: "Executive Director Sales",
             email: "m.aitisam@bereketfoods.com",
-            image: "assets/images/leadership/board/4.png",
+            image: "../assets/images/leadership/board/4.png",
             quals: [
                 "BBA & MBI (Marketing)",
                 "Marketing Strategist",
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Usama Khan Swati",
             designation: "Executive Director Operations",
             email: "usama.khan@bereketfoods.com",
-            image: "assets/images/leadership/board/5.png",
+            image: "../assets/images/leadership/board/5.png",
             quals: [
                 "AI/SW",
                 "Operations Strategy",
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Mr. Muhammad Abubakar",
             designation: "Non-Executive Director",
             email: "abubakar@bereketinternational.com",
-            image: "assets/images/leadership/board/6.png",
+            image: "../assets/images/leadership/board/6.png",
             quals: [
                 "C. Dir, CLA, CT, MBA",
                 "Committee Chair",
