@@ -1,0 +1,625 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Mobile Menu Toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
+
+    // 2. Category Filtering with Fade Animation
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active to current
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            productCards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    card.style.display = 'block';
+                    // Trigger reflow
+                    void card.offsetWidth;
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                }
+            });
+        });
+    });
+
+    // 3. Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            navLinks.classList.remove('active'); // Close mobile menu if open
+            if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // 4. Highlight Active Nav Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const ifOffset = pageYOffset >= (sectionTop - 150);
+            if (ifOffset) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(li => {
+            li.classList.remove('active');
+            if (current && li.getAttribute('href').includes(current)) {
+                li.classList.add('active');
+            }
+        });
+
+        // Header Scrolled State
+        const header = document.querySelector('.main-header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // 4.1 Premium Reveal Logic (IntersectionObserver)
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Once it's revealed, we can stop observing
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    // 4.2 Auto-Stagger Engine
+    function applyAutoStagger() {
+        const containers = document.querySelectorAll('.gallery-grid, .board-grid, .product-grid, .footer-grid, .trust-grid, .alliance-grid');
+        containers.forEach(container => {
+            const children = container.children;
+            Array.from(children).forEach((child, index) => {
+                // Only stagger if they have reveal classes
+                if (child.classList.contains('reveal') || child.querySelector('.reveal')) {
+                    child.style.setProperty('--stagger-index', index);
+                    // If child itself isn't reveal, maybe it's the parent of a reveal? 
+                    // Better yet, just ensure children get it.
+                } else if (container.classList.contains('stagger-reveal')) {
+                    // Fallback for containers explicitly marked
+                    child.style.setProperty('--stagger-index', index);
+                }
+            });
+        });
+    }
+
+    // Initialize Reveals
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    applyAutoStagger();
+
+    // Magnetic Card Effect
+    const magneticCards = document.querySelectorAll('.magnetic-card');
+    magneticCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    });
+
+
+    // 6. Board of Honors Modal Logic
+    const boardMembers = [
+        {
+            name: "Mr. Sardar Nayyer Khan",
+            designation: "Chief Executive Officer",
+            email: "ceo@bereketfoods.com",
+            image: "../assets/images/leadership/board/1.png",
+            quals: [
+                "CPA, CGA (Canada), CMA, MBA",
+                "Business Strategies",
+                "Operational Efficiencies",
+                "Budgeting and Forecasting",
+                "Risk Management",
+                "Business Development"
+            ],
+            experience: "Rtd. Squadron Leader Sardar Nayyer Khan is a commercially astute CPA certified accountant, commercial businesses with over 30 years’ experience of providing comprehensive high quality finance and accounting support services, Management Consultancy to across Canada."
+        },
+        {
+            name: "Mr. Rana M. Nouman",
+            designation: "Founder & Managing Director",
+            email: "md@bereketfoods.com",
+            image: "../assets/images/leadership/board/2.png",
+            quals: [
+                "Business Graduate",
+                "Strategic Entrepreneurship",
+                "FMCG Logistics",
+                "Healthcare Sector Management",
+                "Sustainable Solutions"
+            ],
+            experience: "Mr. Rana Muhammad Nouman is a strategic entrepreneur with over 25 years of experience across Edible Oils, FMCG, Healthcare, and Beverage sectors managing multi-million dollar businesses. He is dedicated to bridging the gap between modern convenience and holistic health through sustainable, forward-thinking solutions."
+        },
+        {
+            name: "Mr. Faisal Omer Hayat",
+            designation: "COO & Co-Founder",
+            email: "faisal.hayat@bereketfoods.com",
+            image: "../assets/images/leadership/board/3.png",
+            quals: [
+                "MBA (IBA)",
+                "Strategic Marketing",
+                "Leadership",
+                "Financial Strategy"
+            ],
+            experience: "Mr. Faisal Omer Hayat is MBA from IBA with over 20+ experience in Strategic Marketing with prior experience of 20+ years in top national FMCG’s companies in leadership positions. A thoroughbred professional strategized and execute the annual marketing budget of USD 14.5 million. Under Mr. Faisal Omer Hayat leadership companies witnessed the double-digit sales growth rate. Further Mr. Faisal Omer Hayat during his career re strategized and re designed the FMCG portfolio and realized all time high topline."
+        },
+        {
+            name: "Mr. Mufti Aitisam Ud Din Haider",
+            designation: "Executive Director Sales",
+            email: "m.aitisam@bereketfoods.com",
+            image: "../assets/images/leadership/board/4.png",
+            quals: [
+                "BBA & MBI (Marketing)",
+                "Marketing Strategist",
+                "Brand Excellence Expert"
+            ],
+            experience: "Mr. Mufti Aitisam Ud Din Haider is a marketing strategist holding both a BBA and an MBI in Marketing, with a proven track record of driving brand excellence across diverse sectors. With extensive leadership experience at premier organizations including Pepsi, Packages Private Ltd Lhr, Herbion, and Comsian, he has established himself as a versatile professional capable of navigating both multinational and national corporate landscapes. Throughout his career, Mr. Mufti Aitisam Ud Din Haider has been instrumental in spearheading high-impact marketing initiatives and managing complex brand portfolios. His expertise lies in translating consumer insights into actionable strategies that fuel market penetration and sustainable topline growth. Known for his analytical rigor and creative vision, he has consistently delivered results that enhance brand equity and operational efficiency within the competitive FMCG and packaging industries."
+        },
+        {
+            name: "Mr. Usama Khan Swati",
+            designation: "Executive Director Operations",
+            email: "usama.khan@bereketfoods.com",
+            image: "../assets/images/leadership/board/5.png",
+            quals: [
+                "AI/SW",
+                "Operations Strategy",
+                "E-commerce Excellence",
+                "Tech-Driven Management"
+            ],
+            experience: "Mr. Usama Khan Swati is a forward-thinking leader with a specialized background in AI/SW, currently serving in the dual capacity of Head of Operations and Head of E-commerce. With a unique blend of technical expertise and strategic business management, he has established himself as a versatile professional capable of scaling digital ecosystems and optimizing complex operational frameworks in an increasingly tech-driven market. Throughout his career, Mr. Swati has been instrumental in spearheading data-driven initiatives and managing integrated commercial portfolios. His expertise lies in leveraging AI-driven insights to streamline operational workflows and enhance e-commerce performance, ensuring sustainable growth and market competitiveness. Known for his analytical precision and operational agility, he consistently delivers results that bridge the gap between emerging technology and commercial excellence."
+        },
+        {
+            name: "Mr. Muhammad Abubakar",
+            designation: "Non-Executive Director",
+            email: "abubakar@bereketinternational.com",
+            image: "../assets/images/leadership/board/6.png",
+            quals: [
+                "C. Dir, CLA, CT, MBA",
+                "Committee Chair",
+                "Business Excellence Expert",
+                "Member TCs & NSC - PSQCA (MoST)"
+            ],
+            experience: "Mr. Abubakar is Board Director, Board Advisor and Business Excellence Expert with over 16 years of experience spanning Asia, Africa & Arabia regions with Food, Agri, Healthcare and FMCG MNCs. He is Certified Board Director, certified Lead Auditor and Trainer. He successfully facilitated various Boards at both strategic and operational fronts in Acquisitions, Business Excellence, Evaluating new Facilities, Compliance, Capacity building, Strategic planning and Business revamping. As Group General Manager, he led group of USD 350 Million. He also led Centralized Planning and Business Integration of multi Billion dollar company in Asia and Africa. He is Member MANCOM from over a decade and providing leadership and governance to organizations by channeling excellence in E2E chain for sustainable triple bottom line."
+        }
+    ];
+
+    window.openBoardModal = function (index) {
+        const member = boardMembers[index];
+        const modal = document.getElementById('boardModal');
+
+        if (member && modal) {
+            document.getElementById('modalImg').src = member.image;
+            document.getElementById('modalName').textContent = member.name;
+            document.getElementById('modalDesignation').textContent = member.designation;
+            document.getElementById('modalExperience').textContent = member.experience;
+
+            const emailLink = document.getElementById('modalEmail');
+            if (emailLink) {
+                emailLink.href = `mailto:${member.email}`;
+                emailLink.innerHTML = `<i class="fas fa-envelope"></i>`;
+                emailLink.setAttribute('aria-label', `Email ${member.name}`);
+            }
+
+            const qualsList = document.getElementById('modalQuals');
+            qualsList.innerHTML = '';
+            member.quals.forEach(qual => {
+                const li = document.createElement('li');
+                li.textContent = qual;
+                qualsList.appendChild(li);
+            });
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeBoardModal = function () {
+        const modal = document.getElementById('boardModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    window.handleOutsideClick = function (event) {
+        const boardModal = document.getElementById('boardModal');
+        const careersModal = document.getElementById('careersModal');
+
+        if (event.target === boardModal) {
+            closeBoardModal();
+        }
+        if (event.target === careersModal) {
+            closeCareersModal();
+        }
+    };
+
+    // 7. Careers Modal Logic
+    window.openCareersModal = function () {
+        const modal = document.getElementById('careersModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeCareersModal = function () {
+        const modal = document.getElementById('careersModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // 8. Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formMessage.style.display = 'none';
+
+            fetch('send_mail.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    formMessage.style.display = 'block';
+                    if (data.success) {
+                        formMessage.style.backgroundColor = '#d4edda';
+                        formMessage.style.color = '#155724';
+                        formMessage.textContent = 'Thank you. Your message has been sent to the Board of Honors.';
+                        contactForm.reset();
+                    } else {
+                        formMessage.style.backgroundColor = '#f8d7da';
+                        formMessage.style.color = '#721c24';
+                        formMessage.textContent = data.message || 'An error occurred. Please try again.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback for static server testing (assuming success for demo)
+                    // Remove this in production if real failure handling is strict
+                    formMessage.style.display = 'block';
+                    formMessage.style.backgroundColor = '#fff3cd'; // Warning color
+                    formMessage.style.color = '#856404';
+                    formMessage.textContent = 'Note: Email sending requires a PHP server. (Or an error occurred)';
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                });
+        });
+    }
+
+    // 9. Infinite Brand Scroller Logic
+    const brandsTrack = document.querySelector('.brands-track');
+    if (brandsTrack) {
+        const brands = document.querySelectorAll('.brand-slide');
+
+        // Clone brands for seamless looping
+        brands.forEach(brand => {
+            const clone = brand.cloneNode(true);
+            brandsTrack.appendChild(clone);
+        });
+
+        // Calculate and set the scroll amount dynamically
+        function updateScrollAmount() {
+            const firstBrand = brands[0];
+            if (firstBrand) {
+                const brandWidth = firstBrand.offsetWidth;
+                const style = window.getComputedStyle(brandsTrack);
+                const gap = parseInt(style.columnGap) || parseInt(style.gap) || 0;
+                const totalScrollAmount = (brandWidth + gap) * brands.length;
+
+                brandsTrack.style.setProperty('--scroll-amount', `${totalScrollAmount}px`);
+                // Slow down the animation a bit more since we doubled the items
+                // Current animation is 45s, might needs adjusting based on total width
+            }
+        }
+
+        // Initial update and re-calculate on window resize
+        updateScrollAmount();
+        window.addEventListener('resize', updateScrollAmount);
+
+        // Ensure it updates after images are loaded
+        window.addEventListener('load', updateScrollAmount);
+    }
+
+    // 10. WebP Support Detection (Preparation for Phase 2 Image Optimization)
+    function checkWebP(callback) {
+        var webP = new Image();
+        webP.onload = webP.onerror = function () {
+            callback(webP.height == 2);
+        };
+        webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+    }
+
+    checkWebP(function (support) {
+        if (support) {
+            document.body.classList.add('webp-supported');
+            console.log("WebP supported");
+        } else {
+            document.body.classList.add('no-webp');
+            console.log("WebP not supported");
+        }
+    });
+
+    // 11. Seamless Hero Background Video Switcher
+    const v1 = document.getElementById('hero-bg-video-1');
+    const v2 = document.getElementById('hero-bg-video-2');
+    const v3 = document.getElementById('hero-bg-video-3');
+
+    if (v1 && v2) {
+        const videos = [v1, v2];
+        if (v3) videos.push(v3);
+
+        let activeIdx = 0;
+
+        const switchVideos = () => {
+            const currentVideo = videos[activeIdx];
+            const nextIdx = (activeIdx + 1) % videos.length;
+            const nextVideo = videos[nextIdx];
+
+            // Start playing the next video slightly before the current one ends or exactly when it ends
+            nextVideo.currentTime = 0;
+            nextVideo.play().then(() => {
+                // Crossfade
+                nextVideo.style.opacity = "0.6";
+                currentVideo.style.opacity = "0";
+
+                activeIdx = nextIdx;
+            }).catch(err => console.error("Seamless playback error:", err));
+        };
+
+        // Listen for ended event on all videos
+        videos.forEach(video => {
+            video.addEventListener('ended', switchVideos);
+        });
+
+        // Ensure the first one is playing and visible
+        videos[0].style.opacity = "0.6";
+        videos[0].play().catch(err => console.log("Auto-play blocked or error:", err));
+    }
+
+    // 12. Shopify Banner Form Submission & Celebration Handler
+    const bannerForm = document.getElementById('shopifyBannerForm');
+    if (bannerForm) {
+        bannerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('shopifyBannerEmail');
+            const email = emailInput ? emailInput.value.trim() : "";
+
+            if (!email) return;
+
+            const submitBtn = bannerForm.querySelector('.shopify-banner-btn');
+            const originalBtnText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+                bannerForm.reset();
+
+                // Launch celebration overlay!
+                triggerCelebration();
+            }, 500);
+        });
+    }
+
+    function triggerCelebration() {
+        const modal = document.getElementById('celebrationModal');
+        const canvas = document.getElementById('celebrationCanvas');
+        if (!modal || !canvas) return;
+
+        // Open modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Setup canvas
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const handleResize = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', handleResize);
+
+        // Confetti & Balloons particle array
+        const particles = [];
+        const colors = ['#D4AF37', '#FF6B6B', '#4D96FF', '#6BCB77', '#FFD93D', '#FF9F43', '#A55EEA'];
+
+        // Instantiate Confetti Ribbons
+        for (let i = 0; i < 120; i++) {
+            particles.push({
+                type: 'confetti',
+                x: Math.random() * width,
+                y: Math.random() * -height - 20,
+                size: Math.random() * 8 + 6,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: Math.random() * 4 - 2,
+                speedY: Math.random() * 5 + 3,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 10 - 5
+            });
+        }
+
+        // Instantiate Floating Balloons
+        for (let i = 0; i < 18; i++) {
+            particles.push({
+                type: 'balloon',
+                x: Math.random() * width,
+                y: height + Math.random() * 300 + 50,
+                radius: Math.random() * 15 + 18,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedY: -(Math.random() * 2 + 1.5),
+                swaySpeed: Math.random() * 0.05 + 0.02,
+                swayRange: Math.random() * 30 + 10,
+                swayOffset: Math.random() * 100
+            });
+        }
+
+        let animationFrameId;
+        const startTime = Date.now();
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            let activeParticles = 0;
+
+            particles.forEach(p => {
+                if (p.type === 'confetti') {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.rotationSpeed;
+
+                    if (p.y < height + 20) {
+                        activeParticles++;
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size, p.size, p.size * 1.8);
+                        ctx.restore();
+                    }
+                } else if (p.type === 'balloon') {
+                    p.y += p.speedY;
+                    p.swayOffset += p.swaySpeed;
+                    const currentX = p.x + Math.sin(p.swayOffset) * p.swayRange;
+
+                    if (p.y > -100) {
+                        activeParticles++;
+                        ctx.save();
+                        
+                        // Body
+                        ctx.beginPath();
+                        ctx.ellipse(currentX, p.y, p.radius * 0.8, p.radius, 0, 0, 2 * Math.PI);
+                        ctx.fillStyle = p.color;
+                        ctx.fill();
+
+                        // Knot
+                        ctx.beginPath();
+                        ctx.moveTo(currentX, p.y + p.radius);
+                        ctx.lineTo(currentX - 5, p.y + p.radius + 8);
+                        ctx.lineTo(currentX + 5, p.y + p.radius + 8);
+                        ctx.closePath();
+                        ctx.fillStyle = p.color;
+                        ctx.fill();
+
+                        // String
+                        ctx.beginPath();
+                        ctx.moveTo(currentX, p.y + p.radius + 8);
+                        ctx.bezierCurveTo(
+                            currentX - 10, p.y + p.radius + 25, 
+                            currentX + 10, p.y + p.radius + 45, 
+                            currentX, p.y + p.radius + 70
+                        );
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+
+                        ctx.restore();
+                    }
+                }
+            });
+
+            const elapsed = Date.now() - startTime;
+            if (activeParticles > 0 && elapsed < 8000) {
+                animationFrameId = requestAnimationFrame(draw);
+            } else {
+                ctx.clearRect(0, 0, width, height);
+            }
+        }
+
+        draw();
+
+        // Dismiss Modal Event
+        const closeBtn = document.getElementById('closeCelebrationBtn');
+        const dismissModal = () => {
+            cancelAnimationFrame(animationFrameId);
+            window.removeEventListener('resize', handleResize);
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            closeBtn.removeEventListener('click', dismissModal);
+        };
+        closeBtn.addEventListener('click', dismissModal);
+
+        // Copy Clipboard Handler
+        const copyBtn = document.getElementById('copyPromoBtn');
+        if (copyBtn) {
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
+            copyBtn.classList.remove('copied');
+            
+            copyBtn.onclick = () => {
+                const codeText = document.getElementById('promoCodeText').textContent;
+                navigator.clipboard.writeText(codeText).then(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Clipboard copy failed:', err);
+                });
+            };
+        }
+    }
+
+});
