@@ -214,6 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
             experience: "Mr. Usama Khan Swati is a forward-thinking leader with a specialized background in AI/SW, currently serving in the dual capacity of Head of Operations and Head of E-commerce. With a unique blend of technical expertise and strategic business management, he has established himself as a versatile professional capable of scaling digital ecosystems and optimizing complex operational frameworks in an increasingly tech-driven market. Throughout his career, Mr. Swati has been instrumental in spearheading data-driven initiatives and managing integrated commercial portfolios. His expertise lies in leveraging AI-driven insights to streamline operational workflows and enhance e-commerce performance, ensuring sustainable growth and market competitiveness. Known for his analytical precision and operational agility, he consistently delivers results that bridge the gap between emerging technology and commercial excellence."
         },
         {
+            name: "Mr. Syed Nadeem Raza",
+            designation: "Country Sales Manager",
+            email: "nadeemrazasyed1975@gmail.com",
+            image: "../assets/images/leadership/board/Syed Nadeem Raza.jpeg",
+            quals: [
+                "MBA (Marketing)",
+                "B2B & B2C Sales",
+                "Key Account Management",
+                "Distribution Strategy",
+                "FMCG Sector Expert"
+            ],
+            experience: "Mr. Syed Nadeem Raza is an experienced B2B & B2C Sales & Distribution Management Specialist with over 23 years of diverse experience in the FMCG sector. He has a proven track record of driving brand building, distribution strategy, and key account management. Previously, he served as Country Manager at Bereket Naturals (p) Ltd. where he successfully launched Kuvvet Breakfast Cereals nationwide, and has held senior sales leadership roles at Fauji Cereals and Lotte Kolson."
+        },
+        {
             name: "Mr. Muhammad Abubakar",
             designation: "Non-Executive Director",
             email: "abubakar@bereketinternational.com",
