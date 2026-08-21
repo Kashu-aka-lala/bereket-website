@@ -65,25 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Highlight Active Nav Link on Scroll
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-links a');
 
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const ifOffset = pageYOffset >= (sectionTop - 150);
+            const ifOffset = window.scrollY >= (sectionTop - 150);
             if (ifOffset) {
                 current = section.getAttribute('id');
             }
         });
 
-        navItems.forEach(li => {
-            li.classList.remove('active');
-            if (current && li.getAttribute('href').includes(current)) {
-                li.classList.add('active');
-            }
-        });
+        if (sections.length > 0 && current) {
+            navItems.forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        }
 
         // Header Scrolled State
         const header = document.querySelector('.main-header');
