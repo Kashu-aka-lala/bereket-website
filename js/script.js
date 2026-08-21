@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sections.length > 0 && current) {
             navItems.forEach(li => {
                 li.classList.remove('active');
-                if (li.getAttribute('href').includes(current)) {
+                const href = li.getAttribute('href');
+                if (href && href.includes(current)) {
                     li.classList.add('active');
                 }
             });
@@ -106,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15,
+        threshold: 0.02,
         rootMargin: "0px 0px -50px 0px"
     });
 
