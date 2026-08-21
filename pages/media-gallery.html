@@ -62,7 +62,7 @@
                     <li><a href="../index.html">Home</a></li>
 
                     <li><a href="../index.html#brands">Our Brands</a></li>
-                    <li><a href="leadership.html">Board of Honors</a></li>
+                    <li><a href="board-of-honors.html">Board of Honors</a></li>
                     <li><a href="factory.html">Factory</a></li>
                     <li><a href="alliances.html">Alliances</a></li>
                     <li><a href="private-labels.html">Private Labels</a></li>
@@ -831,7 +831,7 @@
                     <ul>
 
                         <li><a href="../index.html#brands">Our Brands</a></li>
-                        <li><a href="leadership.html">Board of Honors</a></li>
+                        <li><a href="board-of-honors.html">Board of Honors</a></li>
                         <li><a href="factory.html">Factory</a></li>
                         <li><a href="alliances.html">Alliances</a></li>
                         <li><a href="private-labels.html">Private Labels</a></li>
@@ -896,8 +896,8 @@
 
     <script src="../js/script.js?v=27"></script>
     <script>
-        // Category smooth-scrolling logic
         document.addEventListener('DOMContentLoaded', () => {
+            // Category smooth-scrolling logic
             const filterBtns = document.querySelectorAll('.filter-btn');
 
             filterBtns.forEach(btn => {
@@ -922,6 +922,50 @@
                     }
                 });
             });
+
+            // Lightbox Modal Logic
+            const lightbox = document.getElementById('lightboxModal');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const closeBtn = document.querySelector('.lightbox-close-btn');
+            const galleryCards = document.querySelectorAll('.gallery-card');
+
+            galleryCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const img = card.querySelector('.gallery-img img');
+                    if (img && lightbox && lightboxImg) {
+                        lightboxImg.src = img.src;
+                        lightboxImg.alt = img.alt;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+            });
+
+            const closeLightbox = () => {
+                if (lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            };
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    // Close if clicked outside the image
+                    if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
         });
     </script>
     <!-- Chatbot Widget -->
@@ -943,6 +987,12 @@
         <div class="chat-input">
             <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
             <span id="send-btn" class="fas fa-paper-plane"></span>
+        </div>
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-overlay">
+        <button class="lightbox-close-btn" aria-label="Close image">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Enlarged Image">
         </div>
     </div>
 

@@ -59,7 +59,7 @@ const knowledgeGraph = [
         id: "board_of_honors_overview",
         triggers: ["leadership", "team", "board", "directors", "management", "who runs", "owner", "board of honors", "board of honors 🕴️"],
         response: "Taking you to our **Board of Honors** page to meet our visionaries!",
-        redirect: "leadership.html",
+        redirect: "board-of-honors.html",
         chips: ["CEO (Nayyer Khan)", "MD (Rana Nouman)", "COO (Faisal Hayat)"]
     },
     {
@@ -177,9 +177,11 @@ const closeChatBtn = document.querySelector(".chatbot-header span");
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
+    const isSubpage = window.location.pathname.includes('/pages/');
+    const faviconPath = isSubpage ? '../assets/images/favicon.png' : 'assets/images/favicon.png';
     let chatContent = className === "outgoing"
         ? `<p></p>`
-        : `<span><img src="assets/images/favicon.png" alt="Bereket"></span><p></p>`;
+        : `<span><img src="${faviconPath}" alt="Bereket"></span><p></p>`;
     chatLi.innerHTML = chatContent;
 
     const formattedMessage = message
@@ -241,7 +243,12 @@ const handleChat = (message = null) => {
 
                 if (match.redirect) {
                     setTimeout(() => {
-                        window.location.href = match.redirect;
+                        const isSubpage = window.location.pathname.includes('/pages/');
+                        let dest = match.redirect;
+                        if (!isSubpage) {
+                            dest = 'pages/' + dest;
+                        }
+                        window.location.href = dest;
                     }, 1500);
                 }
 

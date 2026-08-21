@@ -252,6 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('modalDesignation').textContent = member.designation;
             document.getElementById('modalExperience').textContent = member.experience;
 
+            const imgLink = document.getElementById('modalImgLink');
+            if (imgLink) {
+                imgLink.href = `mailto:${member.email}`;
+            }
+
             const emailLink = document.getElementById('modalEmail');
             if (emailLink) {
                 emailLink.href = `mailto:${member.email}`;
